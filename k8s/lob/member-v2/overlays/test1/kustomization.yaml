@@ -1,0 +1,9 @@
+namespace: dash-test1 # this determines the namespace for the application for test1
+resources:
+  - ../../base
+patches:
+# This patch is used to add the ingress for the application - mainly test1 DNS via external DNS, etc
+- path: ingress-patch.yaml
+  target:
+    kind: Ingress
+    name: member-v2-ingress

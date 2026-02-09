@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: member-v2-deployment
+  labels:
+    app: member-v2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: member-v2
+  template:
+    metadata:
+      labels:
+        app: member-v2
+    spec:
+      containers:
+      - name: member-v2
+        image: ghcr.io/brianprovenzano/kargo-source/member-v2:latest # will be changed to the correct image by Kargo
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
